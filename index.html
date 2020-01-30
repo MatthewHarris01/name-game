@@ -1,0 +1,232 @@
+<!doctype html>
+<head>
+	<title>Name Game Demo</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Didjiman/Matthew S. Harris JavaScript game Name Page">
+	<meta name="Keywords" content="Matthew Harris, Matthew S Harris, Matthew S. Harris, Didjiman, JavaScript,
+                               MS Access, MS Office, MS Excel, MS Word, VBA, Visual Basic for Applications, VB, Visual Basic, 
+                               Visual Studio, .NET, database, databases, custom software, custom calculator, 
+                               web scraping, didgeridoo, didjeridu, yidaki, yirdaki">
+	<meta name="author" content="Matthew S Harris">
+
+<script>
+//GLOBAL VARIABLES
+   var ltrs = [];
+   var nmstr = "";
+   var text="";
+
+function likedIt(s) {
+
+//alert("likedIt argument is: " + s);
+//   var s ="";
+   if (s == "Yes") {
+
+//    alert("I knew you would like it, " + nmstr + "!");
+      s = "I knew you would like it. ";
+   }
+   else if (s=="No") { 
+//     alert("I'm sorry you don't like it, " + nmstr);
+      s = "I'm sorry you don't like it. ";
+   }
+   else {
+      alert("UNKNOWN INPUT");
+   }
+
+   //show the output paragraph and button
+   document.getElementById("output").style = "font-weight:bold;text-align:center;font-size:14pt;";
+//   s = document.getElementById("output").innerHTML //style = "font-weight:bold;text-align:center;display:inline;";
+//alert("s is: " + s);
+   document.getElementById("output").innerHTML = s + "<br>It was nice meeting you, <span style='color:green;font-size:large;'>" + 
+            nmstr + "</span>!<br><br>Refresh this page to play again!";
+}   //END OF FUNCTION likedIt
+
+function sortname() {
+//sort the name's characters, and display the sorted name in the "sorted" text box.
+
+var namesorted = "";
+var s = "";
+
+//sort the array	
+text = ltrs;
+text.sort();  //this works because 'text'contains an array at this point.
+
+var namesorted = text.join(""); //join the array elements into a string
+
+   //at this point,fill in the message(s),enable the Yes and No buttons
+   s = "But I just noticed that your letters are out of order! Let's put them in order like this: <br>Don't you like that better?";
+   document.getElementById("sortedmsg").innerHTML = s;
+   document.getElementById("txtsorted").value = namesorted;
+   document.getElementById("sortY").disabled = false;
+   document.getElementById("sortN").disabled = false;
+
+   document.getElementById("proceed").disabled = true;
+
+   
+   //document.getElementById("output").innerHTML = "";
+	
+
+
+
+//{ alert("I knew you would!"); }
+//	else { alert("I'm sorry you don't like it that way."); }
+
+//	alert("I really enjoyed meeting you, " + nmstr + ". \n Have a nice day!");
+
+}    //END FUNCTION sortname
+
+
+
+function entername() {
+
+   var s="";  //scratchpad string for input
+   
+   nmstr = document.getElementById("txtName").value;
+   
+   //ensure user has entered some text
+   if (nmstr=="") {
+      alert("You must enter your name to continue!");
+	  document.getElementById("txtName").value = "";
+	  document.getElementById("txtName").focus();
+	  return;  //bail out, no more work to do
+   }
+   
+    //now reverse the input string and display it.
+   //assemble a string with name chars in reverse order
+   for (i=nmstr.length; i >= 0; i--) {
+    text += nmstr.charAt(i).toUpperCase(); 
+	document.getElementById("txtbkward").value = text;
+	
+	}
+	
+        document.getElementById("lblbkwdName").innerHTML = "Pleased to meet you!";
+
+//	document.getElementById("output").innerHTML = "Thank you '" + text +  "'<br> oops! I guess I got it backwards. <br>A smart website like me shouldn't make mistakes like that!";
+
+//copy the string into an array
+for (i=0; i < text.length; i++ ) {
+	ltrs.push(text.charAt(i));
+} //end of for loop to populate array
+   
+      //name is now backwards, make the oops message visible, display the 'oops' message and enable the proceed button, disable the Enter Name button
+      document.getElementById("pleasedtomeet").display = "block;"
+      document.getElementById("oops").innerHTML = "<strong>oops! I guess I got it backwards. A smart website like me shouldn't make a mistake like that!</strong><br>" + 
+                                                 "<span style='color:red;'>Click the 'Proceed' button to continue</span>."
+      document.getElementById("proceed").disabled = false;
+      document.getElementById("proceed").focus();
+      document.getElementById("entername").disabled=true;
+
+//   alert("input is: '" + s  + "'");
+
+}	   //END OF entername FUNCTION
+
+function init() {
+   //clear all textboxes
+   document.getElementById("txtName").value = "";
+   document.getElementById("txtbkward").value = "";
+   document.getElementById("txtsorted").value = "";
+
+   document.getElementById("txtName").focus();   //set focus to 1st input field
+
+}   //END INIT FUNCTION
+</script>
+	<!-- FB stuff -->
+	<meta property="fb:admins" content="100005648886426" /> <!-- for FB analytics -->
+<!-- ELEMENTS NEEDED FOR BOTH FACEBOOK LIKE AND SHARE BUTTONS -->
+    <meta property="og:url"           content="http://www.didjiman.com/business/jsdemo/Name Gamehtml" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Matthew S Harris - JS Demonstration Apps" />
+    <meta property="og:description"   content="'Name Game' game application by Matthew S Harris" />
+    <meta property="og:image"         content="http://www.didjiman.com/images/fbs-biz.jpg" />
+<!-- END OF FACEBOOK Stuff -->
+
+</head>
+
+<body onload="init();">
+	<!-- STUFF FOR GOOGLE ADS -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-2327563481826994",
+          enable_page_level_ads: true
+     });
+</script>
+
+<!-- GOOGLE BANNER AD -->
+<div style="width:970px;height:250px;margin-left:auto;margin-right:auto;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- jsgame -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:250px"
+     data-ad-client="ca-pub-2327563481826994"
+     data-ad-slot="2625067379"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- FB stuff -->
+<div id="fb-root" style="width:20%;margin-left:auto;margin-right:auto;"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<h1 style="text-align:center;">Name Game</h1>
+<p style="text-align:center;font-size:10pt;font-style:italic;"><strong>Page design and JavaScript code copyright &copy; 2018 by Matthew S Harris.</strong><br>
+based on a program from the book "BASIC Computer Games", published by Workman Publishing, and copyright 1978 by Creative Computing.</p>
+<!-- FB Like & Share -->
+<div style="text-align:center;">
+<div class="fb-like" data-href="http://www.didjiman.com/business/cv-swareJS.htm" data-layout="button_count" 
+data-action="like" data-size="small" data-show-faces="false" data-share="true" style="margin-left:auto;margin-right:auto;">
+</div>
+
+<p style="font-weight:bold;text-align:center;">Type your name in the "Enter Your Name" text box, then click the "Enter Your Name" button</p>
+
+<table style="width:75%;margin-left:auto;margin-right:auto;border:1px solid blue;">
+<tr>
+<td style="text-align:right;font-weight:bold;">
+<label id="lblName" for="Name" style="text-align:right;">Type Your Name Here:</label>
+</td>
+ 
+ 
+<td><input type="text" name="txtName" id="txtName" value="">
+</td>
+<td><button class=button id="entername" onclick="entername();" >Enter Your Name</button></td>
+</tr>
+
+
+<tr>
+<td id="pleasedtomeet" style="text-align:right;font-weight:bold;"> <!-- PLEASED TO MEET YOU -->
+<label id="lblbkwdName" for="Name" style="text-align:right;"></label>
+</td>
+<td>
+<input readonly type="text" name="txtbackward" id="txtbkward">
+<td>
+<span id="oops"></span><button class=button id="proceed" onclick="sortname();" disabled>Proceed</button>
+</td>
+</tr>
+
+<!-- SORTED DISPLAY -->
+<tr>
+<td id="sortedmsg" style="text-align:right;font-weight:bold;"> 
+<label id="lblsorted" for="Name" style="text-align:right;"></label>
+</td>
+<td>
+<input readonly type="text" name="txtsorted" id="txtsorted">
+<td>
+<span id="sorted"></span><button class=button id="sortY" onclick="likedIt('Yes');" disabled>Yes</button>
+<button class=button id="sortN" onclick="likedIt('No');" disabled>No</button>
+</td>
+
+</tr>
+
+</table>
+<!-- END OF GAME MESSAGE -->
+<p id="output" style="font-weight:bold;text-align:center;">some text
+<button id="SObtn" class=button onclick="location.reload();">Start Over</button></p>
+</body>
+
+</html>
+
